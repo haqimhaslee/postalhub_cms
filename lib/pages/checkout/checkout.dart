@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class HubManagement extends StatefulWidget {
-  const HubManagement({super.key});
+class CheckOut extends StatefulWidget {
+  const CheckOut({super.key});
   @override
-  State<HubManagement> createState() => _HubManagementState();
+  State<CheckOut> createState() => _CheckOutState();
 }
 
-class _HubManagementState extends State<HubManagement> {
+class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -55,8 +55,8 @@ class _HubManagementState extends State<HubManagement> {
                                         right: 5,
                                       ),
                                       child: SizedBox(
-                                        width: width > 680 ? 300 : 300,
-                                        child: const SegmentedButtonExample(),
+                                        width: width > 680 ? 240 : 180,
+                                        child: const TextField(),
                                       ))
                                 ],
                               ),
@@ -97,44 +97,56 @@ class _HubManagementState extends State<HubManagement> {
   }
 }
 
-class SegmentedButtonExample extends StatefulWidget {
-  const SegmentedButtonExample({super.key});
-
+class SearchBarApp extends StatefulWidget {
+  const SearchBarApp({super.key});
   @override
-  State<SegmentedButtonExample> createState() => _SegmentedButtonExampleState();
+  State<SearchBarApp> createState() => _SearchBarAppState();
 }
 
-enum ManagementView { all, cms, user }
-
-class _SegmentedButtonExampleState extends State<SegmentedButtonExample> {
-  ManagementView managementviewstate = ManagementView.all;
-
+class _SearchBarAppState extends State<SearchBarApp> {
   @override
   Widget build(BuildContext context) {
-    return SegmentedButton<ManagementView>(
-      segments: const <ButtonSegment<ManagementView>>[
-        ButtonSegment<ManagementView>(
-          value: ManagementView.all,
-          label: Text('All'),
-          //icon: Icon(Icons.calendar_view_day)
-        ),
-        ButtonSegment<ManagementView>(
-          value: ManagementView.cms,
-          label: Text('CMS'),
-          // icon: Icon(Icons.calendar_view_week)
-        ),
-        ButtonSegment<ManagementView>(
-          value: ManagementView.user,
-          label: Text('User'),
-          //icon: Icon(Icons.calendar_view_month)
-        ),
-      ],
-      selected: <ManagementView>{managementviewstate},
-      onSelectionChanged: (Set<ManagementView> newSelection) {
-        setState(() {
-          managementviewstate = newSelection.first;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SearchAnchor(
+          builder: (BuildContext context, SearchController controller) {
+        return SearchBar(
+          elevation: const MaterialStatePropertyAll(0),
+          controller: controller,
+          padding: const MaterialStatePropertyAll<EdgeInsets>(
+              EdgeInsets.symmetric(horizontal: 16.0)),
+          onTap: () {
+            controller.openView();
+          },
+          onChanged: (_) {
+            controller.openView();
+          },
+          leading: const Icon(Icons.search),
+          trailing: <Widget>[
+            Tooltip(
+              message: 'Clear search',
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.close_rounded),
+                selectedIcon: const Icon(Icons.close_rounded),
+              ),
+            )
+          ],
+        );
+      }, suggestionsBuilder:
+              (BuildContext context, SearchController controller) {
+        return List<ListTile>.generate(5, (int index) {
+          final String item = 'item $index';
+          return ListTile(
+            title: Text(item),
+            onTap: () {
+              setState(() {
+                controller.closeView(item);
+              });
+            },
+          );
         });
-      },
+      }),
     );
   }
 }

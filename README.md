@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+## Hosting deployment
+
+"site": "postalhub-cms"
+
+firebase deploy --only hosting:postalhub-cms
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

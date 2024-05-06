@@ -9,6 +9,8 @@ class ParcelInventory extends StatefulWidget {
 class _ParcelInventoryState extends State<ParcelInventory> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
       child: Column(
@@ -68,14 +70,14 @@ class _ParcelInventoryState extends State<ParcelInventory> {
                                           ],
                                         )),
                                   ),
-                                  const Padding(
-                                      padding: EdgeInsets.only(
+                                  Padding(
+                                      padding: const EdgeInsets.only(
                                         left: 5,
                                         right: 5,
                                       ),
                                       child: SizedBox(
-                                        width: 500,
-                                        child: SearchBarApp(),
+                                        width: width > 680 ? 240 : 180,
+                                        child: const SearchBarApp(),
                                       ))
                                 ],
                               ),
@@ -85,9 +87,9 @@ class _ParcelInventoryState extends State<ParcelInventory> {
                   )
                 ],
               )),
-          const Expanded(
+          Expanded(
               child: Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 0,
                     left: 25,
                     right: 25,
@@ -96,16 +98,20 @@ class _ParcelInventoryState extends State<ParcelInventory> {
                   child: Card(
                       elevation: 2,
                       child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 10,
-                            right: 10,
-                            top: 10,
-                            bottom: 10,
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                          right: 10,
+                          top: 10,
+                          bottom: 10,
+                        ),
+                        child: SizedBox(
+                          height: width > 680 ? height - 100 : height - 20,
+                          width: width > 680 ? width - 225 : width - 10,
+                          child: ListView(
+                            children: const [],
                           ),
-                          child: SizedBox(
-                            width: 500,
-                            child: Text("Parcel Data"),
-                          )))))
+                        ),
+                      ))))
         ],
       ),
     );

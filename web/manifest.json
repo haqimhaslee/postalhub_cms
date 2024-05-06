@@ -1,11 +1,11 @@
 {
-    "name": "postalhub_cms",
-    "short_name": "postalhub_cms",
+    "name": "Postal Hub CMS",
+    "short_name": "Postal Hub",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Postal hub CMS",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postalhub_cms/pages/checkout/checkout.dart';
 import 'package:postalhub_cms/pages/home/home.dart';
 import 'package:postalhub_cms/pages/hub_management/hub_management.dart';
 import 'package:postalhub_cms/pages/parcel%20inventory/parcel_inventory.dart';
@@ -19,6 +20,7 @@ class _NavigatorServicesState extends State<NavigatorServices> {
     const ParcelInventory(),
     const HubManagement(),
     const ProfileAndSetting(),
+    const CheckOut(),
   ];
   void openDrawer() {
     scaffoldKey.currentState!.openDrawer();
@@ -34,8 +36,14 @@ class _NavigatorServicesState extends State<NavigatorServices> {
           backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 0,
           scrolledUnderElevation: 0,
-          title: const Row(children: [
-            Text('Postal Hub CMS'),
+          title: Row(children: [
+            Image.asset(
+              'assets/images/postalhub_logo.jpg',
+              width: 40,
+              height: 40,
+              fit: BoxFit.cover,
+            ),
+            const Text('  Postal Hub CMS'),
           ]),
           leading: width > 680
               ? IconButton(
@@ -63,58 +71,36 @@ class _NavigatorServicesState extends State<NavigatorServices> {
             ),
             const NavigationDrawerDestination(
               label: Text("Home"),
-              icon: Icon(Icons.hub_outlined),
-              selectedIcon: Icon(Icons.hub_rounded),
+              icon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(Icons.home_rounded),
             ),
             const NavigationDrawerDestination(
               label: Text("Parcel Inventory"),
-              icon: Icon(Icons.info_outline_rounded),
-              selectedIcon: Icon(Icons.info_rounded),
+              icon: Icon(Icons.inventory_2_outlined),
+              selectedIcon: Icon(Icons.inventory_2_rounded),
             ),
             const NavigationDrawerDestination(
               label: Text("Hub Management"),
-              icon: Icon(Icons.info_outline_rounded),
-              selectedIcon: Icon(Icons.info_rounded),
+              icon: Icon(Icons.dns_outlined),
+              selectedIcon: Icon(Icons.dns_rounded),
             ),
             const NavigationDrawerDestination(
               label: Text("Profile & Settings"),
-              icon: Icon(Icons.info_outline_rounded),
-              selectedIcon: Icon(Icons.info_rounded),
+              icon: Icon(Icons.manage_accounts_outlined),
+              selectedIcon: Icon(Icons.manage_accounts_rounded),
             ),
             const Padding(
               padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
               child: Divider(),
             ),
-            SizedBox.fromSize(
-              size: const Size(10, 55),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(30),
-                ),
-                child: Material(
-                  color: const Color.fromARGB(0, 255, 193, 7),
-                  child: InkWell(
-                    onTap: () => showLicensePage(
-                      context: context,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Licenses",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+            const NavigationDrawerDestination(
+              label: Text("Checkout Parcel"),
+              icon: Icon(Icons.output_outlined),
+              selectedIcon: Icon(Icons.output_rounded),
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
+              child: Divider(),
             ),
           ],
         ),
@@ -143,58 +129,36 @@ class _NavigatorServicesState extends State<NavigatorServices> {
                         ),
                         const NavigationDrawerDestination(
                           label: Text("Home"),
-                          icon: Icon(Icons.hub_outlined),
-                          selectedIcon: Icon(Icons.hub_rounded),
+                          icon: Icon(Icons.home_outlined),
+                          selectedIcon: Icon(Icons.home_rounded),
                         ),
                         const NavigationDrawerDestination(
                           label: Text("Parcel Inventory"),
-                          icon: Icon(Icons.info_outline_rounded),
-                          selectedIcon: Icon(Icons.info_rounded),
+                          icon: Icon(Icons.inventory_2_outlined),
+                          selectedIcon: Icon(Icons.inventory_2_rounded),
                         ),
                         const NavigationDrawerDestination(
                           label: Text("Hub Management"),
-                          icon: Icon(Icons.info_outline_rounded),
-                          selectedIcon: Icon(Icons.info_rounded),
+                          icon: Icon(Icons.dns_outlined),
+                          selectedIcon: Icon(Icons.dns_rounded),
                         ),
                         const NavigationDrawerDestination(
                           label: Text("Profile & Settings"),
-                          icon: Icon(Icons.info_outline_rounded),
-                          selectedIcon: Icon(Icons.info_rounded),
+                          icon: Icon(Icons.manage_accounts_outlined),
+                          selectedIcon: Icon(Icons.manage_accounts_rounded),
                         ),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
                           child: Divider(),
                         ),
-                        SizedBox.fromSize(
-                          size: const Size(10, 55),
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            child: Material(
-                              color: const Color.fromARGB(0, 255, 193, 7),
-                              child: InkWell(
-                                onTap: () => showLicensePage(
-                                  context: context,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      "Licenses",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onSecondaryContainer,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                        const NavigationDrawerDestination(
+                          label: Text("Checkout Parcel"),
+                          icon: Icon(Icons.output_outlined),
+                          selectedIcon: Icon(Icons.output_rounded),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
+                          child: Divider(),
                         ),
                       ],
                     ),

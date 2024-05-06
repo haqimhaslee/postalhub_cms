@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
                       bottom: 20,
                     ),
                     child: Text(
-                      'Home',
+                      'Home (Coming Soon)',
                       style: TextStyle(
                         fontSize: 20,
                       ),
